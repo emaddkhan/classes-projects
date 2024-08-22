@@ -1,0 +1,38 @@
+@font-face {
+    font-family: myfont;
+    src: url(./a_love_of_thunder/thunder.ttf);
+}
+.bg-img{
+    background-image: url(./img/train.png);
+    height: 1000px;
+    
+}
+.img{
+    width: 190px;
+}
+.logo-container{
+    width: 10%;
+}
+.nav-container{
+    width: 80%;
+    align-items: center;
+    font-size: 20px;
+    color: #fff;;
+}
+.bg-txt{
+    margin-top: 15%;
+    margin-left: 5%;
+    text-align: center;
+    font-family: myfont;
+
+
+}
+.welcome{
+    font-size: 112px;
+    color: #fff;
+}
+.n-scale{
+    font-size: 112px;
+    color: #A91125;
+    font-family: myfont;
+}

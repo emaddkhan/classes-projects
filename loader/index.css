@@ -1,0 +1,31 @@
+.Loader{
+    border-radius: 50%;
+    border: 13px solid;
+    border-color: black #f00 #003cff #43ff00;
+    width: 80px;
+    height: 80px;
+    animation:  spin-anim 1.2s linear infinite;
+    translate: 150px;
+    position: relative;
+}
+.loader-2{
+    border-radius: 50%;
+    border: 13px solid;
+    border-color: black #f00 #003cff #43ff00;
+    width: 80px;
+    height: 80px;
+    animation:  spin-anim 1.2s linear infinite;
+    translate: 150px;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+@keyframes spin-anim {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
