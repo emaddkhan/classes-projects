@@ -1,17 +1,17 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import { Searchbar } from 'react-native-paper';
 import { useLocationContext } from '../../services/location/location.context';
 
-const SearchComponent = (isFavoriteToggled=false,onFavoriteHandler=()=>{}) => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const {search,loading,locations,error,restaurants} = useLocationContext();
-  console.log({locations,loading,error,restaurants})
+const SearchComponent = ({isFavoriteToggled=false,onFavoriteHandler=()=>{},}) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const {search} = useLocationContext();
+
   return (
     <Searchbar
       placeholder="Search"
       onChangeText={setSearchQuery}
       value={searchQuery}
-      icon={isFavoriteToggled?"heart-outline":"heart"}
+      icon={isFavoriteToggled ? "heart" : "heart-outline"}
       onIconPress={onFavoriteHandler}
       onSubmitEditing={()=>{
         // console.log("searc from restaurent map")
@@ -22,24 +22,31 @@ const SearchComponent = (isFavoriteToggled=false,onFavoriteHandler=()=>{}) => {
 };
 
 export default SearchComponent;
-// import * as React from 'react';
-// import { Searchbar } from 'react-native-paper';
+// import React, { useState } from "react";
+// import { Searchbar } from "react-native-paper";
+// import {useLocationContext} from '../../services/location/location.context'
 
-// const SearchComponent = ({ isFavoriteToggled = false, onFavoriteHandler = () => {} }) => {
-//   const [searchQuery, setSearchQuery] = React.useState('');
+
+// function SearchComponent({
+//   isFavoriteToggled = false,
+//   onFavoriteHandler = () => {},
+// }) {
+//   const [searchQuery, setSearchQuery] = useState("");
+//   const { search } = useLocationContext();
 
 //   return (
 //     <Searchbar
-//       placeholder="Search"
+//       placeholder="Search for a location"
 //       onChangeText={setSearchQuery}
 //       value={searchQuery}
 //       icon={isFavoriteToggled ? "heart" : "heart-outline"}
 //       onIconPress={onFavoriteHandler}
 //       onSubmitEditing={() => {
-//         console.log("search from restaurant map");
+//         // console.log("search restaurant from location");
+//         search(searchQuery);
 //       }}
 //     />
 //   );
-// };
+// }
 
 // export default SearchComponent;

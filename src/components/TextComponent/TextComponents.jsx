@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import { Text } from 'react-native-paper'
 import styled from 'styled-components/native'
-import themes from '../../utils/themes'
 
 const defaultTextStyle = (theme) => `
   font-family: ${theme.fonts.body};
@@ -45,7 +44,7 @@ const TextStyle = styled(Text)`
   ${(props) => variants[props.customVariant](props.theme)}
 `;
 
-function TextComponent(props) {
+function TextComponents(props) {
   const { variant = "body", children, style } = props;
   return (
     <TextStyle customVariant={variant} style={style}>
@@ -54,4 +53,4 @@ function TextComponent(props) {
   );
 }
 
-export default memo(TextComponent);
+export default memo(TextComponents);

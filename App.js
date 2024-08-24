@@ -6,20 +6,15 @@ import {
   useFonts as useLatoFont,
   Lato_400Regular,
 } from "@expo-google-fonts/lato";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AccountsScreens from './src/screens/AccountsScreens/AccountsScreens';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import LoginScreens from './src/screens/LoginScreen/LoginScreens';
 import "./src/config/fireBaseConfig"
 import AuthenticationContextcomponent from './src/ContextApis/Authentication/Authentication.context';
-import RegisterScreen from './src/screens/RegisterScreen/RegisterScreen';
-import LoginNavigator from './src/Navigator/LoginNavigator';
 import NavigationHandlerComponent from './src/Navigator/NavigationHandlerComponent';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import LocationContext from './src/services/location/location.context';
 import LocationContextComponent from './src/services/location/location.context';
+
+
 
 
 

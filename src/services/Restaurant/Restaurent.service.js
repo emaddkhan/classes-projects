@@ -7,19 +7,13 @@ export const restaurantRequest = (search = "37.7749295,-122.4194155")=>{
         if(!restaurantMockData){
             reject("restaurant not found");
         }
-        const transformrestaurantData = loacationTranformData(restaurant[search])
-        resolve(transformrestaurantData)
+        const transformLocationData = restaurantTranformData( restaurant[search])
+        resolve(transformLocationData)
     })
 }
-const loacationTranformData = (restaurantData)=>{
+const restaurantTranformData = (restaurantData)=>{
     const {results} = restaurantData;
     const formattedResponse = camelize(results);
-    // const {geometry} = formattedResponse[0];
-    // return {
-    //     lat:geometry.restaurant.lat,
-    //     lnt:geometry.restaurant.lnt,
-    //     viewport:geometry.viewport,
-    // };
     const mappedResults = formattedResponse?.map((singleRestaurant)=>{
         singleRestaurant.photos=mockImages[Math.ceil(Math.random()*(mockImages.length-1))];
         return{
@@ -29,5 +23,5 @@ const loacationTranformData = (restaurantData)=>{
             isClosedTemporary:singleRestaurant?.businesStatus==="CLOSED_TEMPORARILY"
         };
     })
-
+    return mappedResults;
 };
