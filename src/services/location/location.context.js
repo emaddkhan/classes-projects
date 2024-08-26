@@ -116,6 +116,7 @@ const LocationContextComponent = ({ children }) => {
       .catch((error) => {
         setError(error);
         setLoading(false);
+        setRestaurants([]);
       });
   }, [keyword]);
   return (

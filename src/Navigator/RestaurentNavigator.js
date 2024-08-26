@@ -1,9 +1,8 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react'
-import AccountsScreens from '../screens/AccountsScreens/AccountsScreens';
-import LoginScreens from '../screens/LoginScreen/LoginScreens';
-import RegisterScreen from '../screens/RegisterScreen/RegisterScreen';
+import { createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import React from 'react';
 import RestaurentListingScreens from '../screens/RestaurentScreens/restaurentListing/RestaurentListingScreens';
+import RestaurantDetailScreen from '../screens/RestaurentScreens/RestaurantDetailScreen/RestaurantDetailScreen';
 
 function RestaurentNavigater() {
     const Stack = createNativeStackNavigator();
@@ -11,10 +10,14 @@ function RestaurentNavigater() {
   return (
     <Stack.Navigator 
     screenOptions={{
+      animation:"slide_from_bottom",
       headerShown:false,
+      gestureEnabled:true,
+      // ...TransitionPresets.ModalPresentationIOS,
     }}
     >
       <Stack.Screen name="RestaurentListinig" component={RestaurentListingScreens}  />
+      <Stack.Screen name="RestaurantDetailScreen" component={RestaurantDetailScreen}  />
     </Stack.Navigator>
   )
 }

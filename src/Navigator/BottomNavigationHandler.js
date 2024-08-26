@@ -4,6 +4,8 @@ import RestaurentListingScreens from '../screens/RestaurentScreens/restaurentLis
 import { Text } from 'react-native-paper';
 import CustomIcon from '../components/CustomIcon/CustomIcon';
 import Map from '../screens/RestaurentScreens/map/Map';
+import Restaurent from '../screens/RestaurentScreens/restaurentListing/RestaurentListingScreens';
+import RestaurentNavigater from './RestaurentNavigator';
 
 
 
@@ -28,7 +30,7 @@ function BottomNavigationHandler() {
     screenOptions={createScreenOptions}
 
     >
-      <Tab.Screen name="Restaurant" component={RestaurentListingScreens} />
+      <Tab.Screen name="Restaurant" component={RestaurentNavigater} />
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
