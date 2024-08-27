@@ -17,7 +17,7 @@ function RestaurentNavigater() {
     }}
     >
       <Stack.Screen name="RestaurentListinig" component={RestaurentListingScreens}  />
-      <Stack.Screen name="RestaurantDetailScreen" component={RestaurantDetailScreen}  />
+      <Stack.Screen name="RestaurantDetailScreens" component={RestaurantDetailScreen}  />
     </Stack.Navigator>
   )
 }

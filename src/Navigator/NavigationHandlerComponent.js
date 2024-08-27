@@ -1,6 +1,5 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React from 'react'
-import RestaurentNavigater from './RestaurentNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
 import BottomNavigationHandler from './BottomNavigationHandler';
 import LoginNavigator from './LoginNavigator';
 

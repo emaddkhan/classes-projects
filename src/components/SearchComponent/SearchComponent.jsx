@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Searchbar } from 'react-native-paper';
 import { useLocationContext } from '../../services/location/location.context';
 
 const SearchComponent = ({isFavoriteToggled=false,onFavoriteHandler=()=>{},}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const {search} = useLocationContext();
-
+  // useEffect(()=>{
+  //   search(searchQuery)
+  // },[])
   return (
     <Searchbar
       placeholder="Search"

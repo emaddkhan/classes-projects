@@ -35,7 +35,7 @@ function Restaurent(props) {
         renderItem={(singleRestaurant)=>(
           <TouchableOpacity
           onPress={()=>{
-            props.navigation.navigate(RestaurantDetailScreen,{
+            props.navigation.navigate("RestaurantDetailScreens",{
               singleRestaurant: singleRestaurant?.item,
             });
           }}

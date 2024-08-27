@@ -76,7 +76,7 @@ const LocationContextComponent = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [error, setError] = useState(null);
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({});
   const [restaurants, setRestaurants] = useState(null);
 
   const onSearchHandler = (searchKeyword) => {
@@ -91,12 +91,15 @@ const LocationContextComponent = ({ children }) => {
   };
 
   useEffect(() => {
+    console.log(keyword,"keyword")
     if (!keyword.length) {
       return;
     }
 
     locationRequest(keyword)
+      
       .then((results) => {
+        
         // setLoading(false);
         setError(null);
         setLocation(results);
