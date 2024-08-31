@@ -1,82 +1,41 @@
-// import React, {  createContext, useContext, useState } from 'react'
-// import { View } from 'react-native'
-// import { RegisterFirebaseRequest } from './authentication.service';
-
-// export const AuthenticationContext = createContext();
-
-// function AuthenticationContextcomponent({children}) {
-//     const [user,setUser] = useState(null);
-//     const [error,setError] = useState(null);
-//     const [loading,setLoading] = useState(null);
-//     const [isAuthenticatedd,setIsAuthenticated] = useState(false);
-
-
-//     const onRegister =async (singleParameter)=>{
-//         const {email,password,confirmPassword}= singleParameter
-//         setError("");
-//         if(password !== confirmPassword){
-//             setError("ERROR: Passwords do not match!")
-//             return;
-//         }
-//         setLoading(true);
-
-//         await RegisterFirebaseRequest(email,password).then(
-//             (userInformation) => {
-//                 setIsAuthenticated(true);
-//                 setUser(userInformation);
-//                 console.log("user is logged in",userInformation)
-//             }).catch((error)=>{
-//             setError(error?.message?.toString());
-//         });
-
-//         setLoading(false);
-//     };
-   
-
-//   return <AuthenticationContext.Provider 
-//   value={{
-//     user,
-//     error,
-//     isAuthenticatedd,
-//     onRegister,
-//     loading,
-//     }}
-//     >
-//     {children}
-//   </AuthenticationContext.Provider>
-// }
-
-// export default AuthenticationContextcomponent
-// export const useAuthenticationContext = () => {
-//     return useContext(AuthenticationContext);;
-//   };
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { LoginFirebaseRequest, RegisterFirebaseRequest } from './authentication.service';
+import { StorageService } from '../../utils/StorageService/StorageService';
 
 export const AuthenticationContext = createContext();
+const STORAGE_KEYS={
+    isAuthenticated:"isAuthenticated",
+    user:"user"
+}
 
 function AuthenticationContextcomponent({ children }) {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    useEffect(() => {
+        const load = async () => {
+          const auth = await StorageService.getItem(STORAGE_KEYS.isAuthenticated);
+          const usr = await StorageService.getItem(STORAGE_KEYS.user);
+    
+          if (auth && usr) {
+            setIsAuthenticated(auth);
+            setUser(usr);
+          }
+        };
+    
+        load();
+      }, []);
     const onRegister = async ({ email, password, confirmPassword }) => {
-       
         setError(null);
-
         console.log('Registering user:', email);  
-        console.log('Password:', password, 'Confirm Password:', confirmPassword);  
-
-        
+        console.log('Password:', password, 'Confirm Password:', confirmPassword);      
         if (password !== confirmPassword) {
             setError("ERROR: Passwords do not match!");
             console.log('Passwords do not match!');  
             return;
         }
-
         setLoading(true);
-
         try {
             const userInformation = await RegisterFirebaseRequest(email, password);
             setIsAuthenticated(true);
@@ -89,27 +48,29 @@ function AuthenticationContextcomponent({ children }) {
             setLoading(false);
         }
     };
-
-
     const onLogin = async (param) => {
         const { email, password } = param;
         setError(null);
-    
         setLoading(true);
         await LoginFirebaseRequest(email, password)
-          .then((userInformation) => {
+          .then(async(userInformation) => {
             setIsAuthenticated(true);
             setUser(userInformation);
-    
+            await StorageService.setItem(STORAGE_KEYS.isAuthenticated, true);
+            await StorageService.setItem(STORAGE_KEYS.user, userInformation);
             console.log("user is logged in", userInformation);
           })
           .catch((error) => {
             setError(error?.message?.toString());
           });
-        //firebase register method
-    
         setLoading(false);
       };
+      const onLogout =async ()=>{
+        setIsAuthenticated(false)
+        setUser(null)
+        await StorageService.removeItem(STORAGE_KEYS.isAuthenticated);
+        await StorageService.removeItem(STORAGE_KEYS.user);
+      }
 
     return (
         <AuthenticationContext.Provider
@@ -120,6 +81,7 @@ function AuthenticationContextcomponent({ children }) {
                 onRegister,
                 loading,
                 onLogin,
+                onLogout,
             }}
         >
             {children}

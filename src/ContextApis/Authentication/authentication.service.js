@@ -1,11 +1,3 @@
-// import { getAuth , createUserWithEmailAndPassword } from "firebase/auth";
-
-
-// export const RegisterFirebaseRequest = (email,password)=>{
-//     const auth =getAuth();
-//     return createUserWithEmailAndPassword(auth,email,password);
-
-// }
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 export const RegisterFirebaseRequest = (email, password) => {

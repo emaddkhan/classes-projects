@@ -1,13 +1,11 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, View ,Text} from 'react-native'
-import {   Title } from 'react-native-paper'
+import { ActivityIndicator, FlatList, View } from 'react-native'
 import SearchComponent from '../../../components/SearchComponent/SearchComponent'
 import SingleRestaurentCards from '../singleRestaurentcards/SingleRestaurentCards'
 import styled from 'styled-components'
 import { useLocationContext } from '../../../services/location/location.context'
 import TextComponents from '../../../components/TextComponent/TextComponents'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import RestaurantDetailScreen from '../RestaurantDetailScreen/RestaurantDetailScreen'
 
 function Restaurent(props) {
   const RestaurantList = styled(FlatList).attrs({
@@ -40,8 +38,7 @@ function Restaurent(props) {
             });
           }}
           >
-            <SingleRestaurentCards singleRestaurant={singleRestaurant.item} />
-            
+            <SingleRestaurentCards singleRestaurant={singleRestaurant.item} />            
           </TouchableOpacity>
         )}
         />):(<View>
@@ -53,16 +50,6 @@ function Restaurent(props) {
           :(<TextComponents  varient="body">Search for restaurant</TextComponents>)}
         </NoRestaurantWrapper>
         </View>)}
-        {/* {
-        <RestaurantList
-          data={restaurants}
-          renderItem={(singleRestaurant) => (
-            <SingleRestaurentCards singleRestaurant={singleRestaurant.item} />
-          )}
-        />
-      
-      } */}
-        
     </View>
     </>
   )

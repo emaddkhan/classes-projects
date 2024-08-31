@@ -6,14 +6,13 @@ import CustomIcon from '../components/CustomIcon/CustomIcon';
 import Map from '../screens/RestaurentScreens/map/Map';
 import Restaurent from '../screens/RestaurentScreens/restaurentListing/RestaurentListingScreens';
 import RestaurentNavigater from './RestaurentNavigator';
+import SettingsScreen from '../screens/RestaurentScreens/SettingsScreen/SettingsScreen';
 
 
 
 
 const Tab = createBottomTabNavigator();
-const SettingsScreen = ()=>{
-    return <Text>Setting</Text>
-}
+
 const createScreenOptions = ({route})=>{
   const iconNames = TAB_ICONS[route.name]
   return {

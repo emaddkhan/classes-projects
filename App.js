@@ -14,10 +14,6 @@ import NavigationHandlerComponent from './src/Navigator/NavigationHandlerCompone
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import LocationContextComponent from './src/services/location/location.context';
 
-
-
-
-
 export default function App() {
   const [loaded] = useFonts({
     Oswald_400Regular,
@@ -34,7 +30,6 @@ padding-top: ${StatusBar.currentHeight ? `${StatusBar.currentHeight}px` : '0px'}
 
 `
 
-  
   return (
     <ThemeProvider theme={themes}>
       <AuthenticationContextcomponent>

@@ -3,21 +3,15 @@ import { SafeAreaView, ScrollView } from "react-native";
 import SingleRestaurentCards from "../singleRestaurentcards/SingleRestaurentCards";
 import { List } from "react-native-paper";
 
-
-
 export default function RestaurantDetailScreen(props) {
-
   const { singleRestaurant } = props?.route?.params;
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinkExpanded, setDrinkExpanded] = useState(false);
-  
   return  <SafeAreaView>
       <ScrollView>
         <SingleRestaurentCards singleRestaurant={singleRestaurant} />
-
-
         <List.Accordion
           title="Breakfast"
           left={(props) => <List.Icon {...props} icon="bread-slice" />}
