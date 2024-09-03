@@ -13,8 +13,17 @@ import AuthenticationContextcomponent from './src/ContextApis/Authentication/Aut
 import NavigationHandlerComponent from './src/Navigator/NavigationHandlerComponent';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import LocationContextComponent from './src/services/location/location.context';
+import IntroScreen from './src/screens/IntroScreen/IntroScreen';
+import { useEffect, useState } from 'react';
 
 export default function App() {
+  const [introScreen,setIsIntroScreen] = useState(true)
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsIntroScreen(false)
+    },3000)
+  })
+  
   const [loaded] = useFonts({
     Oswald_400Regular,
   });
@@ -36,7 +45,7 @@ padding-top: ${StatusBar.currentHeight ? `${StatusBar.currentHeight}px` : '0px'}
         <LocationContextComponent>
           <CustomSafeAreaView>
             <GestureHandlerRootView style={{flex:1}}>
-              <NavigationHandlerComponent/>
+              {introScreen?(<IntroScreen/>):(<NavigationHandlerComponent/>)}
             </GestureHandlerRootView>
           </CustomSafeAreaView>
         </LocationContextComponent>
